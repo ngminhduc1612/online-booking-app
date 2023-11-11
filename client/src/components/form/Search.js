@@ -11,8 +11,8 @@ import {useHistory} from 'react-router-dom'
 const {RangePikcer} = DatePicker;
 const { Options} = Select;
 
-//route
-const history = useHistory();
+
+
 
 const config = {
     appID: process.env.REACT_APP_ALGOLIA_APP_ID,
@@ -25,7 +25,41 @@ const Search = () => {
     const [location, setLocation] = useState('')
     const [date, setDate] = useState('')
     const [bed, setbed] = useState('')  
+    //route 
+    const history = useHistory(); 
 
-    const handleSubmit = () => { history.push('/search-result?location=$(location)${date}&bed=${bed}')
-    };
+
+
+    const handleSubmit = () => {
+         history.push('/search-result?location=$(location)${date}&bed=${bed}')
+    }; 
+  
+    return (
+        <div className="d-flex pb-4">
+          <div className="w-100">
+            <AlgoliaPlaces
+              placeholder="Location"
+              defaultValue={location}
+              options={config}
+              onChange={({ suggestion }) => setLocation(suggestion.value)}
+            />
+          </div>
+        </div>
+      );
+      ```
+
+    return {
+        <div className="d-flex pb-4">
+             <div className="w-100">
+             <AlgoliaPlaces
+               placeholder="Location"
+               defaultValue={location}
+               options={config}
+               onChange={({suggestion}) => setLocation(suggestion.value)}
+               />
+            </div>
+         </div>
+    } ```
 };
+
+export default Search;
