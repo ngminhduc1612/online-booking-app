@@ -4,6 +4,7 @@ import "./App.css";
 import Home from "./pages/home/Home";
 import List from "./pages/list/List";
 import Hotel from "./pages/hotel/Hotel";
+```import SearchResult from ".hotles/SearchResult";```
 function App() {
   return (
     <BrowserRouter>

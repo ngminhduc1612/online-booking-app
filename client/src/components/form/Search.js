@@ -50,6 +50,20 @@ const Search = () => {
                 curent && curent.valueOf() < moment().subtract(1, "days")
                      }
           /> 
+            <Select
+                onChange={(value) => setbed(value)}
+                className="w-100"
+                size="large"
+                placeholder="Number of beds" >
+                    <Option key={1}>{1}</Option>
+                    <Option key={2}>{2}</Option>
+                    <Option key={3}>{3}</Option>
+                    <Option key={4}>{4}</Option>
+            </Select>
+            <SearchOutlined
+             onCLick={handleSubmit}
+              className="btn btn-primiary p-3 btn" />
+         
           </div>
         </div>
       );
