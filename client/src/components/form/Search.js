@@ -42,24 +42,19 @@ const Search = () => {
               defaultValue={location}
               options={config}
               onChange={({ suggestion }) => setLocation(suggestion.value)}
-            />
+              style={{ height: "50px"}}
+          />
+           <RangePikcer 
+            onChange={(value,dateString) => setDate(dateString)}
+            disableDate={(curent)=> 
+                curent && curent.valueOf() < moment().subtract(1, "days")
+                     }
+          /> 
           </div>
         </div>
       );
-      ```
-
-    return {
-        <div className="d-flex pb-4">
-             <div className="w-100">
-             <AlgoliaPlaces
-               placeholder="Location"
-               defaultValue={location}
-               options={config}
-               onChange={({suggestion}) => setLocation(suggestion.value)}
-               />
-            </div>
-         </div>
-    } ```
+      
+      
 };
 
 export default Search;
