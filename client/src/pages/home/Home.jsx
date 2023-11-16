@@ -5,6 +5,8 @@ import Featured from "../../components/featured/Featured";
 import "./home.css";
 import PropertyList from "../../components/propertyList/PropertyList";
 import FeaturedProperties from "../../components/featuredProperties/FeaturedProperties"
+import MailList from "../../components/MailList/MailList";
+
 const Home = () => {
   return (
     <>
@@ -12,10 +14,15 @@ const Home = () => {
       <Header></Header>
       <div className="homeContainer">
         <Featured />
+        {/* phân loại các homestay */}
         <h1 className="homeTitle">Browse by property type</h1>
         <PropertyList />
+        {/* phần khách sạn được ưa thích */}
         <h1 className="homeTitle">Homes guests love</h1>
           <FeaturedProperties />
+          {/* phần thanh gửi mail */}
+          <MailList />
+
       </div>
     </>
   );
