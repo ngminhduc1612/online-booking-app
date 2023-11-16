@@ -38,15 +38,19 @@
     margin: 20px 0px;
   }
   
+
+  
   .headerBtn {
     background-color: #0071c2;
     color: white;
-    font-weight: 500;
+    font-weight: bold;
     border: none;
     padding: 10px;
     cursor: pointer;
   }
   
+
+
   .headerSearch {
     height: 30px;
     background-color: white;
@@ -62,8 +66,10 @@
     max-width: 1024px;
   }
   
+  
+
   .headerIcon {
-    color: lightgray;
+    color: gray;
   }
   
   .headerSearchItem {
@@ -77,9 +83,12 @@
     outline: none;
   }
   
+  
+/* chu trong thanh search */
   .headerSearchText {
     color: lightgray;
     cursor: pointer;
+    font-weight:bold;
   }
   
   .date {
@@ -122,6 +131,8 @@
     cursor: pointer;
     background-color: white;
   }
+  
+
   
   .optionCounterButton:disabled {
     cursor: not-allowed;
