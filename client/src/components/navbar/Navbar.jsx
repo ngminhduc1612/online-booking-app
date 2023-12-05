@@ -4,7 +4,11 @@ const Navbar = () => {
     return (
         <div className="navbar">
           <div className="navContainer">
-            <span className="logo" >Hotel Booking</span>
+            {/* <div className="navTitle"> */}
+              {/* <span className="title" >Hotel Booking</span> */}
+               <img className="logo" src="https://onlinebooking.vn/wp-content/uploads/online-booking-logo-no-1.png" alt="" />
+            {/* </div> */}
+            
             <div className="navItems">
               <button className="navButton" >List your Hotel</button>
               <button className="navButton" >Register</button>
