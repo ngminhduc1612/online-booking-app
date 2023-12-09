@@ -96,6 +96,7 @@ const Header = ({ type }) => {
                   type="text"
                   placeholder="Where are you going?"
                   className="headerSearchInput"
+                  // doi trang thai state destination moi khi thay doi
                   onChange={(e) => setDestination(e.target.value)}
                 />
               </div>
