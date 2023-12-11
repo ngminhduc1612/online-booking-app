@@ -16,7 +16,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"name\":\"Hotel Duc\",\r\n    \"type\":\"hotel\",\r\n    \"city\":\"Hanoi\",\r\n    \"address\":\"somewhere\",\r\n    \"distance\":\"500\",\r\n    \"title\":\"Best Hotel\",\r\n    \"desc\":\"hotel description\",\r\n    \"cheapestPrice\":100\r\n}",
+							"raw": "{\r\n    \"name\":\"Hotel hhi\",\r\n    \"type\":\"hotel\",\r\n    \"city\":\"NinhBinh\",\r\n    \"address\":\"somewhere\",\r\n    \"distance\":\"500\",\r\n    \"title\":\"Best Hotel\",\r\n    \"desc\":\"hotel description\",\r\n    \"cheapestPrice\":100\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -44,7 +44,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"name\":\"Hotel Top\"\r\n}",
+							"raw": "{\r\n    \"name\":\"Hotel Top Updated\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -137,7 +137,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"username\":\"duc\",\r\n    \"email\":\"ngminhduc@gmai.com\",\r\n    \"password\":\"12345\"\r\n}",
+							"raw": "{\r\n    \"username\":\"admin\",\r\n    \"email\":\"admin@gmai.com\",\r\n    \"password\":\"admin\",\r\n    \"isAdmin\":true\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -162,8 +162,29 @@
 				{
 					"name": "LOGIN",
 					"request": {
-						"method": "GET",
-						"header": []
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\":\"admin\",\r\n    \"password\":\"admin\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8800/api/auth/login",
+							"host": [
+								"localhost"
+							],
+							"port": "8800",
+							"path": [
+								"api",
+								"auth",
+								"login"
+							]
+						}
 					},
 					"response": []
 				}
@@ -203,9 +224,33 @@
 				},
 				{
 					"name": "GET AUTHENTICATION",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
 					"request": {
 						"method": "GET",
-						"header": []
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\":\"duc161\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8800/api/users/checkauthentication",
+							"host": [
+								"localhost"
+							],
+							"port": "8800",
+							"path": [
+								"api",
+								"users",
+								"checkauthentication"
+							]
+						}
 					},
 					"response": []
 				},
@@ -235,7 +280,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:8800/api/users/{{user_id}}",
+							"raw": "localhost:8800/api/users/656057211772f7bf41a52e25",
 							"host": [
 								"localhost"
 							],
@@ -243,7 +288,7 @@
 							"path": [
 								"api",
 								"users",
-								"{{user_id}}"
+								"656057211772f7bf41a52e25"
 							]
 						}
 					},
@@ -253,7 +298,19 @@
 					"name": "GET ALL USERS",
 					"request": {
 						"method": "GET",
-						"header": []
+						"header": [],
+						"url": {
+							"raw": "localhost:8800/api/users/",
+							"host": [
+								"localhost"
+							],
+							"port": "8800",
+							"path": [
+								"api",
+								"users",
+								""
+							]
+						}
 					},
 					"response": []
 				}
@@ -331,7 +388,19 @@
 					"name": "GET ROOM",
 					"request": {
 						"method": "GET",
-						"header": []
+						"header": [],
+						"url": {
+							"raw": "localhost:8800/api/rooms/{{hotel_id}}",
+							"host": [
+								"localhost"
+							],
+							"port": "8800",
+							"path": [
+								"api",
+								"rooms",
+								"{{hotel_id}}"
+							]
+						}
 					},
 					"response": []
 				},
