@@ -1,24 +1,50 @@
 import useFetch from "../../hooks/useFetch";
+import { DateRange } from "react-date-range";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { format } from "date-fns";
 import "./featured.css";
 import React from "react";
 const Featured = () => {
   const { data, loading, error } = useFetch(
     "/hotels/countByCity?cities=NinhBinh,Hanoi,london"
   );
+  const [destination, setDestination] = useState("");
+  const [openDate, setOpenDate] = useState(false);
+  const [date, setDate] = useState([
+    {
+      startDate: new Date(),
+      endDate: new Date(),
+      key: "selection",
+    },
+  ]);
+  const [options, setOptions] = useState({
+    adult: 1,
+    children: 0,
+    room: 1,
+  });
+  const navigate = useNavigate();
+  function handleSearch(destination) {
+    navigate("/hotels", { state: { destination, date, options } });
+    console.log("dfasfa");
+  }
   return (
     <div className="featured">
       {loading ? (
         "Loading please wait"
       ) : (
         <>
-          <div className="featuredItem">
+          <div
+            className="featuredItem"
+            onClick={() => handleSearch("NinhBinh")}
+          >
             <img
               src="https://cf.bstatic.com/xdata/images/city/max500/957801.webp?k=a969e39bcd40cdcc21786ba92826063e3cb09bf307bcfeac2aa392b838e9b7a5&o="
               alt=""
               className="featuredImg"
             />
             <div className="featuredTitles">
-              <h1>Berlin</h1>
+              <h1>Ninh Binh</h1>
               <h2>{data[0]} properties</h2>
             </div>
           </div>
@@ -29,8 +55,11 @@ const Featured = () => {
               alt=""
               className="featuredImg"
             />
-            <div className="featuredTitles">
-              <h1>Madrid</h1>
+            <div
+              className="featuredTitles"
+              onClick={() => handleSearch("Hanoi")}
+            >
+              <h1>Ha Noi</h1>
               <h2>{data[1]} properties</h2>
             </div>
           </div>
@@ -40,7 +69,10 @@ const Featured = () => {
               alt=""
               className="featuredImg"
             />
-            <div className="featuredTitles">
+            <div
+              className="featuredTitles"
+              onClick={() => handleSearch("london")}
+            >
               <h1>London</h1>
               <h2>{data[2]} properties</h2>
             </div>
