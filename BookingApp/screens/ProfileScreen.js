@@ -1,14 +1,14 @@
 import { StyleSheet, Text, View } from "react-native";
 import React from "react";
 
-const BookingScreen = () => {
+const ProfileScreen = () => {
     return (
         <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-          <Text>BookingScreen</Text>
+          <Text>ProfileScreen</Text>
         </View>
       );
 }
 
-export default BookingScreen
+export default ProfileScreen
 
 const styles = StyleSheet.create({})
