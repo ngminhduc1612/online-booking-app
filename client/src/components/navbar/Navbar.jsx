@@ -1,13 +1,17 @@
 import React from 'react'
 import "./navbar.css"
+import { Link } from "react-router-dom";
+
 const Navbar = () => {
     return (
         <div className="navbar">
           <div className="navContainer">
-            {/* <div className="navTitle"> */}
-              {/* <span className="title" >Hotel Booking</span> */}
+            
+           
+              <Link to="/" style={{ color: "inherit", textDecoration: "none" }}>
                <img className="logo" src="https://onlinebooking.vn/wp-content/uploads/online-booking-logo-no-1.png" alt="" />
-            {/* </div> */}
+            </Link>
+
             
             <div className="navItems">
               <button className="navButton" >List your Hotel</button>
