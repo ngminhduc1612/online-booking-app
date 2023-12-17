@@ -7,7 +7,7 @@ const SearchItem = ({ item }) => {
       <img src={item.photos[0]} alt="" className="siImg" />
       <div className="siDesc">
         <h1 className="siTitle">{item.name}</h1>
-        {/* <span className="siDistance">Dista{item.distance}m from center</span> */}
+        <span className="siDistance">Distance{item.distance}m from center</span>
         {/* <span className="siTaxiOp">Free airport taxi</span>
         <span className="siSubtitle">
           Studio Apartment with Air conditioning
@@ -25,7 +25,7 @@ const SearchItem = ({ item }) => {
           <button>{item.rating}</button>
         </div>} */}
         <div className="siDetailTexts">
-          <span className="siPrice">Min Price:${item.cheapestPrice}</span>
+          <span className="siPrice">Price from:${item.cheapestPrice}</span>
           <span className="siTaxOp">Includes taxes and fees</span>
           {/* chuyen sang xem thong tin tung hotel */}
           <Link to={`/hotels/${item._id}`}>
