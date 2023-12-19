@@ -3,12 +3,12 @@ import React from "react";
 import Navbar from "../../components/navbar/Navbar";
 import Header from "../../components/header/Header";
 import { useLocation } from "react-router-dom";
-import { useState } from "react";
+import { useState,useContext } from "react";
 import { format } from "date-fns";
 import { DateRange } from "react-date-range";
 import SearchItem from "../../components/searchItem/SearchItem";
 import useFetch from "../../hooks/useFetch";
-
+import { SearchContext } from "../../context/SearchContext";
 const List = () => {
   const location = useLocation();
   const [destination, setDestination] = useState(location.state.destination);
@@ -22,9 +22,11 @@ const List = () => {
   const { data, loading, error, reFetch } = useFetch(
     `/hotels?city=${destination}&min=${min || 0 }&max=${max || 999}`
   );
+  const { dispatch } = useContext(SearchContext);
 
   const handleClick = () => {
     reFetch();
+    dispatch({ type: "NEW_SEARCH", payload: { destination, dates, options } });
   };
 
   return (
@@ -47,7 +49,7 @@ const List = () => {
               )} to ${format(dates[0].endDate, "MM/dd/yyyy")}`}</span>
               {openDate && (
                 <DateRange
-                  onChange={(item) => setDates([item.selection])}
+                  onChange={(item) => setDates([item.selection]) }
                   minDate={new Date()}
                   ranges={dates}
                 />
