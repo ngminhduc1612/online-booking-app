@@ -37,6 +37,7 @@ const Login = () => {
   return (
     <div className="login">
       <div className="lContainer">
+      <h1 className="Login">Login</h1>
         <input
           type="text"
           placeholder="username"
@@ -51,6 +52,15 @@ const Login = () => {
           onChange={handleChange}
           className="lInput"
         />
+       
+          <label>
+            <input 
+            type="checkbox" 
+            name="remember" 
+            /> 
+            Remember Me
+          </label>
+         
         <button disabled={loading} onClick={handleClick} className="lButton">
           Login
         </button>

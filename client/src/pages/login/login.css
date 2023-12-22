@@ -5,28 +5,53 @@
   justify-content: center;
 }
 
+
 .lContainer {
   display: flex;
+  text-align: center;
   flex-direction: column;
   gap: 10px;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+ 
 }
 
 .lInput{
+  width: 200px;
   height: 30px;
   padding: 10px;
+  border: 1px solid #ba9898;
+  border-radius: 10px;
 }
 
 .lButton {
   border: none;
+  margin: 16px 0;
   padding: 10px 20px;
   background-color: #0071c2;
   color: white;
   font-weight: bold;
   cursor: pointer;
-  border-radius: 5px;
+  border-radius: 50px;
 }
 
 .lButton:disabled{
   background-color: #0071c28c;
   cursor: not-allowed;
+}
+
+.forgot-password {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.forgot-password:hover {
+  text-decoration: underline;
+}
+
+.options {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
