@@ -5,6 +5,7 @@
   }
   
   .listWrapper {
+    flex-wrap: wrap;
     width: 100%;
     max-width: 1024px;
     display: flex;
@@ -14,17 +15,20 @@
   .listSearch {
     flex: 1;
     background-color: #4bd687;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     padding: 10px;
     border-radius: 10px;
     position: sticky;
     top: 10px;
     height: max-content;
+    z-index: 1;
   }
   
   .lsTitle{
     font-size: 20px;
     color: #f15454;
     margin-bottom: 10px;
+    font-weight: bold;
   }
   
   .lsItem{
