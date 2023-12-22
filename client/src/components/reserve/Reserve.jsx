@@ -52,7 +52,7 @@ const Reserve = ({ setOpen, hotelId }) => {
 
   const navigate = useNavigate();
 
-  const handleClick = async () => {
+  const reserveRoom = async () => {
     try {
       await Promise.all(
         selectedRooms.map((roomId) => {
@@ -100,7 +100,7 @@ const Reserve = ({ setOpen, hotelId }) => {
             </div>
           </div>
         ))}
-        <button onClick={handleClick} className="rButton">
+        <button onClick={reserveRoom} className="rButton">
           Reserve Now!
         </button>
       </div>
