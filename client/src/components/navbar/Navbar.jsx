@@ -17,7 +17,11 @@ const Navbar = () => {
             <div className="navItems">
               {/* <button className="navButton" >List your Hotel</button> */}
               <button className="navButton" >Register</button>
+              <Link to="/login">
+
               <button className="navButton" >Login</button>
+              </Link>
+
             </div>
             )}
           </div>

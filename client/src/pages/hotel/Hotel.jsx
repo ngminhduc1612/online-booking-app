@@ -15,8 +15,8 @@ import { useContext, useState } from "react";
 import useFetch from "../../hooks/useFetch";
 import { useLocation, useNavigate } from "react-router-dom";
 import { SearchContext } from "../../context/SearchContext";
-// import { AuthContext } from "../../context/AuthContext";
-// import Reserve from "../../components/reserve/Reserve";
+import { AuthContext } from "../../context/AuthContext";
+import Reserve from "../../components/reserve/Reserve";
 
 const Hotel = () => {
   const location = useLocation();
@@ -26,7 +26,7 @@ const Hotel = () => {
   const [openModal, setOpenModal] = useState(false);
 
   const { data, loading, error } = useFetch(`/hotels/find/${id}`);
-  // const { user } = useContext(AuthContext);
+  const { user } = useContext(AuthContext);
   const navigate = useNavigate();
 
   const { dates, options } = useContext(SearchContext);
@@ -58,11 +58,11 @@ const Hotel = () => {
   };
 
   const handleClick = () => {
-    // if (user) {
-    //   setOpenModal(true);
-    // } else {
-    //   navigate("/login");
-    // }
+    if (user) {
+      setOpenModal(true);
+    } else {
+      navigate("/login");
+    }
   };
   return (
     <div>
