@@ -6,12 +6,6 @@ import Search from "../components/forms/Search"
 import {searchListings} from "../actions/hotel";
 ```
 
-import { useStore } from "react-redux";
-import { read, diffDays, isAlreadyBooked } from "../actions/hotel";
-import { getSessionId } from "../actions/stripe";
-import moment from "moment";
-import { useSelector } from "react-redux";
-import { loadStripe } from "@stripe/stripe-js";
 
 const SearchResult = () => {
   //state 
