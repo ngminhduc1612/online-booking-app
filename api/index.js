@@ -7,6 +7,7 @@ import  hotelsRoute from "./routes/hotels.js"
 import  roomsRoute from "./routes/rooms.js"
 import cookieParser from "cookie-parser"
 import cors from "cors"
+import orderRoute from "./routes/order.js"
 
 const app = express()
 dotenv.config()
@@ -33,6 +34,7 @@ app.use("/api/auth", authRoute)
 app.use("/api/users", usersRoute)
 app.use("/api/hotels", hotelsRoute)
 app.use("/api/rooms", roomsRoute)
+app.use("/api/orders", orderRoute)
 
 app.use((err,req,res,next)=>{
     const errorStatus = err.status || 500
