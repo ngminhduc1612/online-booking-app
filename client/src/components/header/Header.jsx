@@ -55,6 +55,7 @@ const Header = ({ type }) => {
   const {user} = useContext(AuthContext)
 
   const handleSearch = () => {
+    // luu nhung lua chon de dung cho page sau
     dispatch({ type: "NEW_SEARCH", payload: { destination, dates, options } });
 
     navigate("/hotels", { state: { destination, dates, options } });
