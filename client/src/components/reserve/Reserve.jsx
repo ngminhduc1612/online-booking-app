@@ -11,6 +11,8 @@ import React from "react";
 import { AuthContext } from '../../context/AuthContext';
 const Reserve = ({ setOpen, hotelId }) => {
   const [selectedRooms, setSelectedRooms] = useState([]);
+  const [selectedRoomsNumber, setSelectedRoomsNumber] = useState([]);
+
   const { data, loading, error } = useFetch(`/hotels/room/${hotelId}`);
   const { dates } = useContext(SearchContext);
   const {user} = useContext(AuthContext)
@@ -50,12 +52,12 @@ const Reserve = ({ setOpen, hotelId }) => {
     return !isFound;
   };
 
-  const handleSelect = (e, price) => {
+  const handleSelect = (e, price,roomNumberSelected) => {
     const checked = e.target.checked;
     const value = e.target.value;
   
     setSelectedRoomsPrice(price);
-   
+    setSelectedRoomsNumber(roomNumberSelected)
 
     console.log(value)
     // lay cac phong nguoi dung da tick, them value vao selectedRoom
@@ -76,7 +78,14 @@ const Reserve = ({ setOpen, hotelId }) => {
             dates: alldates,
           });
          
-         
+          const upload =  axios.post(`/orders/${roomId}`, {
+            username:user.username,
+            roomnumber:selectedRoomsNumber,
+            start:dates[0].startDate,
+            end:dates[0].endDate,
+            price:selectedRoomsPrice*selectedRooms.length*dayDistance
+    
+              });
 
 
           return res.data;
@@ -87,11 +96,26 @@ const Reserve = ({ setOpen, hotelId }) => {
      
     } catch (err) {}
     console.log("User đặt"+user.username)
-    console.log("Phòng đặt"+selectedRooms)
+    console.log("So Phòng đặt"+selectedRoomsNumber)
     console.log("Ngày phòng đặt"+dates[0].startDate)
     console.log("Ngày phòng đặt"+dates[0].endDate)
 
     console.log("Giá hóa đơn"+selectedRoomsPrice*selectedRooms.length*dayDistance)
+
+    try {
+    
+         
+         
+
+
+          
+        
+        
+   
+      setOpen(false);
+     
+    } catch (err) {}
+
     alert("Successful reserve")
     navigate("/");
   };
@@ -122,7 +146,7 @@ const Reserve = ({ setOpen, hotelId }) => {
                   <input
                     type="checkbox"
                     value={roomNumber._id}
-                    onClick={(e) => handleSelect(e, item.price)}
+                    onClick={(e) => handleSelect(e, item.price,roomNumber.number)}
                     disabled={!isAvailable(roomNumber)}
                   />
                 </div>
