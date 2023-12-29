@@ -25,6 +25,9 @@ const List = () => {
   const { dispatch } = useContext(SearchContext);
 
   const handleClick = () => {
+    //
+    // setDestination(destination)
+    // console.log("dd"+destination)
     reFetch();
     dispatch({ type: "NEW_SEARCH", payload: { destination, dates, options } });
   };

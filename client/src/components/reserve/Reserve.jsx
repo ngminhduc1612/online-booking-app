@@ -77,7 +77,7 @@ const Reserve = ({ setOpen, hotelId }) => {
           const res = axios.put(`/rooms/availability/${roomId}`, {
             dates: alldates,
           });
-         
+          
           const upload =  axios.post(`/orders/${roomId}`, {
             username:user.username,
             roomnumber:selectedRoomsNumber,
