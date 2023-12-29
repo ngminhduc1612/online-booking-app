@@ -3,24 +3,27 @@ const { Schema } = mongoose;
 
 const OrderSchema = new mongoose.Schema({
     username:{
-        type: String,
+        type:String,
         required:true,
     },
     roomid:{
-        type: String,
+        type:String,
         required:true,
     },
-    roomNumbers:[{ number:Number }],
+    roomNumbers:{ 
+        type:Number,
+        require:true,
+    },
     start:{
-        type: Date,
+        type:Date,
         require:true,
     },
     end:{
-        type: Date,
+        type:Date,
         require:true,
     },
     price:{
-        type: Number,
+        type:Number,
         require:true,
     },
     status:{
