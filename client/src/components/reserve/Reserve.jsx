@@ -84,7 +84,7 @@ const Reserve = ({ setOpen, hotelId }) => {
             start:dates[0].startDate,
             end:dates[0].endDate,
             price:selectedRoomsPrice*selectedRooms.length*dayDistance,
-            hotelIdSelected:hotelId
+            hotelid:hotelId
               });
 
 
