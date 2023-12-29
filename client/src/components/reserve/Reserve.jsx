@@ -80,11 +80,11 @@ const Reserve = ({ setOpen, hotelId }) => {
           
           const upload =  axios.post(`/orders/${roomId}`, {
             username:user.username,
-            roomnumber:selectedRoomsNumber,
+            roomNumbers:selectedRoomsNumber,
             start:dates[0].startDate,
             end:dates[0].endDate,
-            price:selectedRoomsPrice*selectedRooms.length*dayDistance
-    
+            price:selectedRoomsPrice*selectedRooms.length*dayDistance,
+            hotelIdSelected:hotelId
               });
 
 
@@ -102,19 +102,7 @@ const Reserve = ({ setOpen, hotelId }) => {
 
     console.log("Giá hóa đơn"+selectedRoomsPrice*selectedRooms.length*dayDistance)
 
-    try {
-    
-         
-         
-
-
-          
-        
-        
-   
-      setOpen(false);
-     
-    } catch (err) {}
+ 
 
     alert("Successful reserve")
     navigate("/");
