@@ -11,7 +11,7 @@ const Datatable = ({ columns }) => {
   const path = location.pathname.split("/")[1];
   console.log(path);
   const [list, setList] = useState();
-  const { data, loading, error } = useFetch(`/${path}`);
+  const { data, loading, error, reFetch } = useFetch(`/${path}`);
   console.log(data);
   useEffect(() => {
     setList(data);
@@ -28,6 +28,7 @@ const Datatable = ({ columns }) => {
       await axios.put(`/${path}/${id}`, {
         status: true,
       });
+      reFetch();
     } catch (err) {}
   };
 

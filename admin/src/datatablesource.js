@@ -88,32 +88,32 @@ export const roomColumns = [
   },
 ];
 export const orderColumns = [
-  { field: "username", headerName: "USER NAME", width: 230 },
-  { field: "hotelid", headerName: "HOTEL NAME", width: 230 },
+  { field: "username", headerName: "User Name", width: 230 },
+  { field: "hotelid", headerName: "Hotel Name", width: 230 },
 
   {
     field: "roomNumbers",
-    headerName: "ROOM NUMBER",
+    headerName: "Room Number",
     width: 130,
   },
   {
     field: "start",
-    headerName: "START DATE",
+    headerName: "Start Date",
     width: 115,
   },
   {
     field: "end",
-    headerName: "END DATE",
+    headerName: "End Date",
     width: 115,
   },
   {
     field: "price",
-    headerName: "PRICE $",
+    headerName: "Price $",
     width: 100,
   },
   {
     field: "status",
-    headerName: "STATUS",
+    headerName: "Paid",
     width: 100,
   },
 ];
