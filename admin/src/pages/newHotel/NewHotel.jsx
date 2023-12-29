@@ -109,7 +109,7 @@ const NewHotel = () => {
                   <option value={true}>Yes</option>
                 </select>
               </div>
-              <div className="selectRooms">
+              {/* <div className="selectRooms">
                 <label>Rooms</label>
                 <select id="rooms" multiple onChange={handleSelect}>
                   {loading
@@ -121,7 +121,7 @@ const NewHotel = () => {
                         </option>
                       ))}
                 </select>
-              </div>
+              </div> */}
               <button onClick={handleClick}>Send</button>
             </form>
           </div>

@@ -23,6 +23,13 @@ const Datatable = ({ columns }) => {
       setList(list.filter((item) => item._id !== id));
     } catch (err) {}
   };
+  const handleCheck = async (id) => {
+    try {
+      await axios.put(`/${path}/${id}`, {
+        status: true,
+      });
+    } catch (err) {}
+  };
 
   const actionColumn = [
     {
@@ -49,6 +56,32 @@ const Datatable = ({ columns }) => {
       },
     },
   ];
+  const orderActionColumn = [
+    {
+      field: "action",
+      headerName: "Action",
+      width: 200,
+      renderCell: (params) => {
+        return (
+          <div className="cellAction">
+            <div
+              className="viewButton"
+              onClick={() => handleCheck(params.row._id)}
+            >
+              Check
+            </div>
+
+            <div
+              className="deleteButton"
+              onClick={() => handleDelete(params.row._id)}
+            >
+              Delete
+            </div>
+          </div>
+        );
+      },
+    },
+  ];
   return data.length !== 0 ? (
     <div className="datatable">
       <div className="datatableTitle">
@@ -57,15 +90,27 @@ const Datatable = ({ columns }) => {
           Add New
         </Link>
       </div>
-      <DataGrid
-        className="datagrid"
-        rows={list}
-        columns={columns.concat(actionColumn)}
-        pageSize={9}
-        rowsPerPageOptions={[9]}
-        checkboxSelection
-        getRowId={(row) => row._id}
-      />
+      {path === "orders" ? (
+        <DataGrid
+          className="datagrid"
+          rows={list}
+          columns={columns.concat(orderActionColumn)}
+          pageSize={9}
+          rowsPerPageOptions={[9]}
+          checkboxSelection
+          getRowId={(row) => row._id}
+        />
+      ) : (
+        <DataGrid
+          className="datagrid"
+          rows={list}
+          columns={columns.concat(actionColumn)}
+          pageSize={9}
+          rowsPerPageOptions={[9]}
+          checkboxSelection
+          getRowId={(row) => row._id}
+        />
+      )}
     </div>
   ) : null;
 };

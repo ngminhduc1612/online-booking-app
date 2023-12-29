@@ -7,7 +7,11 @@ export const userColumns = [
     renderCell: (params) => {
       return (
         <div className="cellWithImg">
-          <img className="cellImg" src={params.row.img || "https://i.ibb.co/MBtjqXQ/no-avatar.gif"} alt="avatar" />
+          <img
+            className="cellImg"
+            src={params.row.img || "https://i.ibb.co/MBtjqXQ/no-avatar.gif"}
+            alt="avatar"
+          />
           {params.row.username}
         </div>
       );
@@ -30,9 +34,9 @@ export const userColumns = [
     width: 100,
   },
   {
-    field: "phone",
+    field: "phonenumber",
     headerName: "Phone",
-    width: 100,
+    width: 130,
   },
 ];
 
@@ -80,6 +84,36 @@ export const roomColumns = [
   {
     field: "maxPeople",
     headerName: "Max People",
+    width: 100,
+  },
+];
+export const orderColumns = [
+  { field: "username", headerName: "USER NAME", width: 230 },
+  { field: "hotelid", headerName: "HOTEL NAME", width: 230 },
+
+  {
+    field: "roomNumbers",
+    headerName: "ROOM NUMBER",
+    width: 130,
+  },
+  {
+    field: "start",
+    headerName: "START DATE",
+    width: 115,
+  },
+  {
+    field: "end",
+    headerName: "END DATE",
+    width: 115,
+  },
+  {
+    field: "price",
+    headerName: "PRICE $",
+    width: 100,
+  },
+  {
+    field: "status",
+    headerName: "STATUS",
     width: 100,
   },
 ];
