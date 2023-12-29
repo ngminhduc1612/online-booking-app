@@ -4,6 +4,7 @@ export const createOrder = async (req,res,next)=>{
     const newOrder = new Order(req.body)
     
     try {
+        newOrder.roomid = req.params.id
         const savedOrder = await newOrder.save()
         res.status(200).json(savedOrder)
     } catch (err) {
