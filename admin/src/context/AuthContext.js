@@ -2,7 +2,7 @@ import { createContext, useEffect, useReducer } from "react";
 import React from "react";
 // khi dispatch co user,loading,error, user tra ve action.payload la thong tin tk trong csdl
 const INITIAL_STATE = {
-  user: JSON.parse(localStorage.getItem("username")) || null,
+  user: JSON.parse(localStorage.getItem("user")) || null,
   loading: false,
   error: null,
 };

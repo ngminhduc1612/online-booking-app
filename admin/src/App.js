@@ -76,7 +76,7 @@ function App() {
                 }
               />
               <Route
-                path=":productId"
+                path="find/:productId"
                 element={
                   <ProtectedRoute>
                     <Single />
@@ -87,7 +87,7 @@ function App() {
                 path="new"
                 element={
                   <ProtectedRoute>
-                    <NewHotel  />
+                    <NewHotel />
                   </ProtectedRoute>
                 }
               />
@@ -101,19 +101,21 @@ function App() {
                   </ProtectedRoute>
                 }
               />
-              <Route
-                path=":productId"
-                element={
-                  <ProtectedRoute>
-                    <Single />
-                  </ProtectedRoute>
-                }
-              />
+              <Route path="find">
+                <Route
+                  path=":productId"
+                  element={
+                    <ProtectedRoute>
+                      <Single />
+                    </ProtectedRoute>
+                  }
+                />
+              </Route>
               <Route
                 path="new"
                 element={
                   <ProtectedRoute>
-                    <NewRoom  />
+                    <NewRoom />
                   </ProtectedRoute>
                 }
               />
