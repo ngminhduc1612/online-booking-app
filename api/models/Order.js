@@ -10,7 +10,23 @@ const OrderSchema = new mongoose.Schema({
         type: String,
         required:true,
     },
-    roomNumbers:[{ number:Number, unavailableDates:{type:[Date]} }],
+    roomNumbers:[{ number:Number }],
+    start:{
+        type: Date,
+        require:true,
+    },
+    end:{
+        type: Date,
+        require:true,
+    },
+    price:{
+        type: Number,
+        require:true,
+    },
+    status:{
+        type:Boolean,
+        default:false,
+    },
 },
 { timestamps : true }
 );
