@@ -18,8 +18,8 @@ const Home = () => {
 
         <Featured />
         {/* phân loại các khách sạn theo loai như hotel, homestay */}
-        <h1 className="homeTitle">Browse by type</h1>
-        <PropertyList />
+          {/* <h1 className="homeTitle">Browse by type</h1>
+          <PropertyList /> */}
         {/* phần khách sạn được ưa thích */}
         <h1 className="homeTitle">Homes guests love</h1>
           <FeaturedProperties />

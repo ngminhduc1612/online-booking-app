@@ -13,7 +13,7 @@ const Navbar = () => {
                <img className="logo" src="https://onlinebooking.vn/wp-content/uploads/online-booking-logo-no-1.png" alt="" />
             </Link>
 
-            {user ? (<h1>Account: {user.username}</h1>) : (
+            {user ? (<h1 className="account">Hello,{user.username}</h1>) : (
             <div className="navItems">
               {/* <button className="navButton" >List your Hotel</button> */}
               <button className="navButton" >Register</button>
