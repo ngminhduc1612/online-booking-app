@@ -44,16 +44,6 @@ export const createRoom = async (req, res, next) => {
           },
         }
       );
-      const newOrder = new Order({
-          username: req.body.username,
-          roomid: req.params.id,
-          roomNumbers: [{
-              number: req.body.roomNumber,
-              unavailableDates: [req.body.dates]
-          }]
-      });
-      await newOrder.save();
-
       res.status(200).json("Room status has been updated.");
     } catch (err) {
       next(err);
