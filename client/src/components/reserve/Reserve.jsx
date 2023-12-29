@@ -95,9 +95,9 @@ const Reserve = ({ setOpen, hotelId }) => {
       setOpen(false);
      
     } catch (err) {}
-    console.log("User đặt"+user.username)
+    console.log("User đặt"+user._id)
     console.log("So Phòng đặt"+selectedRoomsNumber)
-    console.log("Ngày phòng đặt"+dates[0].startDate)
+    console.log("Ngày phòng đặt"+dates[0].startDate.split("T")[0])
     console.log("Ngày phòng đặt"+dates[0].endDate)
 
     console.log("Giá hóa đơn"+selectedRoomsPrice*selectedRooms.length*dayDistance)
