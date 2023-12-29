@@ -79,7 +79,7 @@ const Reserve = ({ setOpen, hotelId }) => {
           });
           
           const upload =  axios.post(`/orders/${roomId}`, {
-            username:user.username,
+            username:user._id,
             roomNumbers:selectedRoomsNumber,
             start:dates[0].startDate,
             end:dates[0].endDate,
@@ -95,7 +95,7 @@ const Reserve = ({ setOpen, hotelId }) => {
       setOpen(false);
      
     } catch (err) {}
-    console.log("User đặt"+user.username)
+    console.log("User đặt"+user._id)
     console.log("So Phòng đặt"+selectedRoomsNumber)
     console.log("Ngày phòng đặt"+dates[0].startDate)
     console.log("Ngày phòng đặt"+dates[0].endDate)
