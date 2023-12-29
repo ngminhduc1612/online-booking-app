@@ -1,13 +1,14 @@
+import Hotel from "../models/Hotel.js";
 import Order from "../models/Order.js";
 
 export const createOrder = async (req,res,next)=>{
     const newOrder = new Order(req.body)
     
     try {
-        const Order = await Order.findById(
-            req.body.Orderid
+        const hotel = await Hotel.findById(
+            req.body.hotelid
         );
-        newOrder.Orderid = Order.name
+        newOrder.hotelid = hotel.name
         newOrder.roomid = req.params.id
         const savedOrder = await newOrder.save()
         res.status(200).json(savedOrder)
