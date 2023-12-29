@@ -6,6 +6,10 @@ const OrderSchema = new mongoose.Schema({
         type:String,
         required:true,
     },
+    hotelid:{
+        type:String,
+        required:true,
+    },
     roomid:{
         type:String,
         required:true,

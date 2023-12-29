@@ -19,3 +19,13 @@ export const getOrders = async (req,res,next)=>{
         next(err)
     }
 }
+export const getOrder = async (req,res,next)=>{
+    try {
+        const orderid = await Order.findById(
+            req.params.id
+        );
+        res.status(200).json(orderid)
+    } catch (err) {
+        next(err)
+    }
+}
