@@ -1,5 +1,5 @@
 import express from "express"
-import { createOrder, getOrder, getOrders, updateOrder } from "../controllers/order.js"
+import { createOrder, getOrder, getOrders } from "../controllers/order.js"
 import { verifyAdmin } from "../utils/verifyToken.js";
 
 const router = express.Router();
@@ -7,6 +7,5 @@ const router = express.Router();
 router.post("/:id", createOrder);
 router.get("/", verifyAdmin, getOrders);
 router.get("/:id", verifyAdmin, getOrder);
-router.put("/:id", verifyAdmin, updateOrder);
 
 export default router
