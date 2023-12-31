@@ -7,7 +7,7 @@ const SearchResults = ({data,input,setInput}) => {
   return (
     <View style={{padding:10}}>
        <FlatList data={data} renderItem={({item}) => {
-           if(item.city.toLowerCase().includes(input.toLowerCase())){
+   
                if(input === ""){
                    return null;
                }
@@ -15,12 +15,13 @@ const SearchResults = ({data,input,setInput}) => {
                    <Pressable onPress={() => {
                        setInput(item.city);
                        navigation.navigate("Home",{
-                           input:item.city
+                           input:item.city,
+                           
                        })
 
                    }} style={{flexDirection:"row",alignItems:"center",marginVertical:10}}>
                        <View>
-                           <Image style={{width:70,height:70}} source={{uri:item.placeImage}}/>
+                           <Image style={{width:70,height:70}} source={{uri:item.photos[0]}}/>
                        </View>
                        <View style={{marginLeft:10}}>
                            <Text style={{fontSize:15,fontWeight:"500"}}>{item.name}</Text>
@@ -30,7 +31,7 @@ const SearchResults = ({data,input,setInput}) => {
                    </Pressable>
                )
            }
-       }}/>
+       }/>
     </View>
   )
 }
