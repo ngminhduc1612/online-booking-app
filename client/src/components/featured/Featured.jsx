@@ -1,32 +1,43 @@
 import useFetch from "../../hooks/useFetch";
 import { DateRange } from "react-date-range";
-import { useState } from "react";
+import { useState,useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { format } from "date-fns";
 import "./featured.css";
 import React from "react";
+import { SearchContext } from "../../context/SearchContext";
 const Featured = () => {
   const { data, loading, error } = useFetch(
     "/hotels/countByCity?cities=NinhBinh,Hanoi,london"
   );
   const [destination, setDestination] = useState("");
+
   const [openDate, setOpenDate] = useState(false);
-  const [date, setDate] = useState([
+  const [dates, setDate] = useState([
     {
       startDate: new Date(),
       endDate: new Date(),
       key: "selection",
     },
   ]);
+  
+
+
+
+  
   const [options, setOptions] = useState({
     adult: 1,
     children: 0,
     room: 1,
   });
   const navigate = useNavigate();
+  const { dispatch } = useContext(SearchContext);
+
   function handleSearch(destination) {
-    navigate("/hotels", { state: { destination, date, options } });
-    console.log("dfasfa");
+    dispatch({ type: "NEW_SEARCH", payload: { destination, dates, options } });
+
+    navigate("/hotels", { state: { destination, dates, options } });
+    // console.log("dfasfa");
   }
   return (
     <div className="featured">

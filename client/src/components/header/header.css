@@ -6,6 +6,9 @@
     position: relative;
   }
   
+  .headerTitle{
+    color:white;
+  }
   .headerContainer {
     width: 100%;
     max-width: 1024px;
@@ -36,6 +39,7 @@
   
   .headerDesc {
     margin: 20px 0px;
+    color:white;
   }
   
 
@@ -63,7 +67,8 @@
     position: absolute;
     bottom: -25px;
     width: 100%;
-    max-width: 1024px;
+    max-width: 800px;
+    left:350px;
   }
   
   
