@@ -3,14 +3,37 @@ const { Schema } = mongoose;
 
 const OrderSchema = new mongoose.Schema({
     username:{
-        type: String,
+        type:String,
+        required:true,
+    },
+    hotelid:{
+        type:String,
         required:true,
     },
     roomid:{
-        type: String,
+        type:String,
         required:true,
     },
-    roomNumbers:[{ number:Number, unavailableDates:{type:[Date]} }],
+    roomNumbers:{ 
+        type:Number,
+        require:true,
+    },
+    start:{
+        type:Date,
+        require:true,
+    },
+    end:{
+        type:Date,
+        require:true,
+    },
+    price:{
+        type:Number,
+        require:true,
+    },
+    status:{
+        type:Boolean,
+        default:false,
+    },
 },
 { timestamps : true }
 );
