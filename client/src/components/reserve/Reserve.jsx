@@ -8,12 +8,24 @@ import { SearchContext } from "../../context/SearchContext";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import React from "react";
-
+import { AuthContext } from '../../context/AuthContext';
 const Reserve = ({ setOpen, hotelId }) => {
   const [selectedRooms, setSelectedRooms] = useState([]);
+  const [selectedRoomsNumber, setSelectedRoomsNumber] = useState([]);
+
   const { data, loading, error } = useFetch(`/hotels/room/${hotelId}`);
   const { dates } = useContext(SearchContext);
+  const {user} = useContext(AuthContext)
+  const [selectedRoomsPrice, setSelectedRoomsPrice] = useState();
 
+  const MILLISECONDS_PER_DAY = 1000 * 60 * 60 * 24;
+  function dayDifference(date1, date2) {
+    const timeDiff = Math.abs(date2.getTime() - date1.getTime());
+    const diffDays = Math.ceil(timeDiff / MILLISECONDS_PER_DAY);
+    return diffDays;
+  }
+
+  const dayDistance = dayDifference(dates[0].endDate, dates[0].startDate);
   const getDatesInRange = (startDate, endDate) => {
     const start = new Date(startDate);
     const end = new Date(endDate);
@@ -40,9 +52,15 @@ const Reserve = ({ setOpen, hotelId }) => {
     return !isFound;
   };
 
-  const handleSelect = (e) => {
+  const handleSelect = (e, price,roomNumberSelected) => {
     const checked = e.target.checked;
     const value = e.target.value;
+  
+    setSelectedRoomsPrice(price);
+    setSelectedRoomsNumber(roomNumberSelected)
+
+    console.log(value)
+    // lay cac phong nguoi dung da tick, them value vao selectedRoom
     setSelectedRooms(
       checked
         ? [...selectedRooms, value]
@@ -59,12 +77,35 @@ const Reserve = ({ setOpen, hotelId }) => {
           const res = axios.put(`/rooms/availability/${roomId}`, {
             dates: alldates,
           });
+          
+          const upload =  axios.post(`/orders/${roomId}`, {
+            username:user.username,
+            roomNumbers:selectedRoomsNumber,
+            start:dates[0].startDate,
+            end:dates[0].endDate,
+            price:selectedRoomsPrice*selectedRooms.length*dayDistance,
+            hotelid:hotelId
+              });
+
+
           return res.data;
         })
+        
       );
       setOpen(false);
-      navigate("/");
+     
     } catch (err) {}
+    console.log("User đặt"+user._id)
+    console.log("So Phòng đặt"+selectedRoomsNumber)
+    console.log("Ngày phòng đặt"+dates[0].startDate.split("T")[0])
+    console.log("Ngày phòng đặt"+dates[0].endDate)
+
+    console.log("Giá hóa đơn"+selectedRoomsPrice*selectedRooms.length*dayDistance)
+
+ 
+
+    alert("Successful reserve")
+    navigate("/");
   };
   return (
     <div className="reserve">
@@ -89,10 +130,11 @@ const Reserve = ({ setOpen, hotelId }) => {
               {item.roomNumbers.map((roomNumber) => (
                 <div className="room">
                   <label>{roomNumber.number}</label>
+                  {/*  lam the nao truyen them item.price */}
                   <input
                     type="checkbox"
                     value={roomNumber._id}
-                    onChange={handleSelect}
+                    onClick={(e) => handleSelect(e, item.price,roomNumber.number)}
                     disabled={!isAvailable(roomNumber)}
                   />
                 </div>

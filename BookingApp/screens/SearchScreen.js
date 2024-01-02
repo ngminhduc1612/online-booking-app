@@ -8,8 +8,9 @@ import axios from "axios";
 const SearchScreen = () => {
     const [input,setInput] = useState("");
     const { data, loading, error } = useFetch(`http://192.168.59.1:8800/api/hotels/?city=${input}`);
-    console.log(data)
-    console.log(error)
+    // console.log(data)
+    // console.log(loading)
+    // console.log(error)
     return (
         <SafeAreaView>
             <View

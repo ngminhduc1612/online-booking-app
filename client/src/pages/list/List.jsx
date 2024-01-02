@@ -24,7 +24,13 @@ const List = () => {
   );
   const { dispatch } = useContext(SearchContext);
 
+  const handleInputChange = (e) => {
+    // Khi giá trị trong input thay đổi, cập nhật giá trị của destination
+    setDestination(e.target.value);
+  };
   const handleClick = () => {
+    
+
     reFetch();
     dispatch({ type: "NEW_SEARCH", payload: { destination, dates, options } });
   };
@@ -32,14 +38,14 @@ const List = () => {
   return (
     <div>
       <Navbar />
-      <Header type="list" />
+      <Header type="li2st" />
       <div className="listContainer">
         <div className="listWrapper">
           <div className="listSearch">
             <h1 className="lsTitle">Search</h1>
             <div className="lsItem">
               <label>Destination</label>
-              <input placeholder={destination} type="text" />
+              <input placeholder={destination} value={destination} onChange={handleInputChange} type="text" />
             </div>
             <div className="lsItem">
               <label>Check-in Date</label>
@@ -68,7 +74,7 @@ const List = () => {
                     className="lsOptionInput"
                   />
                 </div>
-                <div className="lsOptionItem">
+                {/* <div className="lsOptionItem">
                   <span className="lsOptionText">
                     Max price <small>per night</small>
                   </span>
@@ -77,8 +83,8 @@ const List = () => {
                     onChange={(e) => setMax(e.target.value)}
                     className="lsOptionInput"
                   />
-                </div>
-                <div className="lsOptionItem">
+                </div> */}
+                {/* <div className="lsOptionItem">
                   <span className="lsOptionText">Adult</span>
                   <input
                     type="number"
@@ -86,8 +92,8 @@ const List = () => {
                     className="lsOptionInput"
                     placeholder={options.adult}
                   />
-                </div>
-                <div className="lsOptionItem">
+                </div> */}
+                {/* <div className="lsOptionItem">
                   <span className="lsOptionText">Children</span>
                   <input
                     type="number"
@@ -95,8 +101,8 @@ const List = () => {
                     className="lsOptionInput"
                     placeholder={options.children}
                   />
-                </div>
-                <div className="lsOptionItem">
+                </div> */}
+                {/* <div className="lsOptionItem">
                   <span className="lsOptionText">Room</span>
                   <input
                     type="number"
@@ -104,7 +110,7 @@ const List = () => {
                     className="lsOptionInput"
                     placeholder={options.room}
                   />
-                </div>
+                </div> */}
               </div>
             </div>
             <button onClick={handleClick}>Search</button>
