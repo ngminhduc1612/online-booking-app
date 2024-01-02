@@ -2,22 +2,31 @@ import { Dimensions, Pressable, StyleSheet, Text, View, Image } from "react-nati
 import React from "react"
 import { AntDesign } from '@expo/vector-icons';
 import { MaterialIcons } from '@expo/vector-icons';
+import { useNavigation } from "@react-navigation/native";
 
-const PropertyCard = ({ rooms, children, adults, selectedDates, city, name, photos, address, price }) => {
+const PropertyCard = ({ rooms, children, adults, selectedDates, city, item }) => {
     const { width, height } = Dimensions.get("window")
     // console.log(city)
     // console.log(selectedDates)
     // console.log(photos)
+    const navigation = useNavigation();
     return (
         <View>
-            <Pressable style={{ margin: 15, flexDirection: "row", backgroundColor: "white" }}>
+            <Pressable 
+            onPress={() => navigation.navigate("Info",{
+                selectedDates:selectedDates,
+                adults:adults,
+                children:children,
+                item:item
+            })}
+            style={{ margin: 15, flexDirection: "row", backgroundColor: "white" }}>
                 <View>
-                    <Image style={{ height: height / 4, width: width - 200 }} source={{ uri: photos }} />
+                    <Image style={{ height: height / 4, width: width - 200 }} source={{ uri: item.photos[0] }} />
                 </View>
 
                 <View style={{ padding: 10 }}>
                     <View style={{ flexDirection: "row", alignItems: "center", justifyContent: "space-between" }}>
-                        <Text style={{ width: 130 }}>{name}</Text>
+                        <Text style={{ width: 130 }}>{item.name}</Text>
                         <AntDesign name="hearto" size={24} color="red" />
                     </View>
 
@@ -52,7 +61,7 @@ const PropertyCard = ({ rooms, children, adults, selectedDates, city, name, phot
                             fontWeight: "bold",
                         }}
                     >
-                        {address.length > 50 ? address.substr(0, 50) : address}
+                        {item.address.length > 50 ? item.address.substr(0, 50) : item.address}
                     </Text>
 
                     <Text style={{ marginTop: 4, fontSize: 11, fontWeight: "500" }}>
@@ -66,7 +75,7 @@ const PropertyCard = ({ rooms, children, adults, selectedDates, city, name, phot
                             // textDecorationLine: "line-through",
                         }}
                     >
-                        {price}
+                        {item.cheapestPrice}
                     </Text>
 
                     <View style={{ marginTop: 6 }}>
