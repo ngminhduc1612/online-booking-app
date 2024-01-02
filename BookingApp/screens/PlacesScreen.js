@@ -1,3 +1,4 @@
+
 import { Pressable, ScrollView, StyleSheet, Text, View } from "react-native";
 import React, { useLayoutEffect, useState, useEffect } from "react";
 import { useNavigation, useRoute } from "@react-navigation/native";
@@ -12,7 +13,7 @@ import { FontAwesome } from '@expo/vector-icons';
 const PlacesScreen = () => {
   const route = useRoute()
   const input = route.params?.city
-  const { data, loading, error } = useFetch(`http://192.168.59.1:8800/api/hotels/?city=${input}`);
+  const { data, loading, error } = useFetch(`http://192.168.56.1:8800/api/hotels/?city=${input}`);
   const navigation = useNavigation()
   const [modalVisible, setModalVisible] = useState(false)
   const filters = [
@@ -26,7 +27,6 @@ const PlacesScreen = () => {
     },
   ];
   const [selectedFilter, setSelectedFilter] = useState([]);
-
   useLayoutEffect(() => {
     navigation.setOptions({
       headerShown: true,
@@ -53,8 +53,44 @@ const PlacesScreen = () => {
     });
   }, []);
 
+  const searchPlaces = data
+  const [sortedData,setSortedData] = useState(data)
+  useEffect(() => {
+    setSortedData(data);
+  }, [data]);
+
+  const compare = (a,b) => {
+    if (a.cheapestPrice > b.cheapestPrice){
+      return -1;
+    }
+    if (a.cheapestPrice < b.cheapestPrice){
+      return 1;
+    }
+    return 0;
+  }
+
+  const comparison = (a,b) => {
+    if(a.cheapestPrice < b.cheapestPrice){
+      return -1;
+    }
+    if(a.cheapestPrice > b.cheapestPrice){
+      return 1;
+    }
+    return 0;
+  }
+
   const applyFilter = (filter) => {
     setModalVisible(false)
+    switch(filter){
+      case "cost:High to Low":
+        searchPlaces.sort(compare);
+        setSortedData(searchPlaces);
+        break;
+      case "cost:Low to High":
+        searchPlaces.sort(comparison);
+        setSortedData(searchPlaces);
+        break;
+    }
   }
 
   return (
@@ -98,17 +134,14 @@ const PlacesScreen = () => {
 
       <ScrollView
         style={{ backgroundColor: "#F5F5F5" }}>
-        {data.map((item) => (
+        {sortedData.map((item) => (
           <PropertyCard
             rooms={route.params.rooms}
             children={route.params.children}
             adults={route.params.adults}
             selectedDates={route.params.selectedDates}
             city={route.params.city}
-            photos={item.photos[0]}
-            name={item.name}
-            address={item.address}
-            price={item.cheapestPrice}
+            item={item}
           ></PropertyCard>
 
         ))}
