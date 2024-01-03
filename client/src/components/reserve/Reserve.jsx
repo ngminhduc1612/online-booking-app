@@ -13,6 +13,7 @@ const Reserve = ({ setOpen, hotelId }) => {
   const [selectedRooms, setSelectedRooms] = useState([]);
   const [selectedRoomsNumber, setSelectedRoomsNumber] = useState([]);
 
+  // lay ds room theo hotel Id
   const { data, loading, error } = useFetch(`/hotels/room/${hotelId}`);
   const { dates } = useContext(SearchContext);
   const {user} = useContext(AuthContext)
@@ -55,7 +56,7 @@ const Reserve = ({ setOpen, hotelId }) => {
   const handleSelect = (e, price,roomNumberSelected) => {
     const checked = e.target.checked;
     const value = e.target.value;
-  
+    
     setSelectedRoomsPrice(price);
     setSelectedRoomsNumber(roomNumberSelected)
 
@@ -71,41 +72,46 @@ const Reserve = ({ setOpen, hotelId }) => {
   const navigate = useNavigate();
 
   const reserveRoom = async () => {
-    try {
-      await Promise.all(
-        selectedRooms.map((roomId) => {
-          const res = axios.put(`/rooms/availability/${roomId}`, {
-            dates: alldates,
-          });
+
+    if(selectedRooms.length==1){
+      try {
+        await Promise.all(
+          selectedRooms.map((roomId) => {
+            const res = axios.put(`/rooms/availability/${roomId}`, {
+              dates: alldates,
+            });
+            
+            const upload =  axios.post(`/orders/${roomId}`, {
+              username:user.username,
+              roomNumbers:selectedRoomsNumber,
+              start:dates[0].startDate,
+              end:dates[0].endDate,
+              price:selectedRoomsPrice*selectedRooms.length*dayDistance,
+              hotelid:hotelId
+                });
+  
+  
+            return res.data;
+          })
           
-          const upload =  axios.post(`/orders/${roomId}`, {
-            username:user.username,
-            roomNumbers:selectedRoomsNumber,
-            start:dates[0].startDate,
-            end:dates[0].endDate,
-            price:selectedRoomsPrice*selectedRooms.length*dayDistance,
-            hotelid:hotelId
-              });
-
-
-          return res.data;
-        })
-        
-      );
-      setOpen(false);
-     
-    } catch (err) {}
-    console.log("User đặt"+user._id)
-    console.log("So Phòng đặt"+selectedRoomsNumber)
-    console.log("Ngày phòng đặt"+dates[0].startDate.split("T")[0])
-    console.log("Ngày phòng đặt"+dates[0].endDate)
-
-    console.log("Giá hóa đơn"+selectedRoomsPrice*selectedRooms.length*dayDistance)
-
- 
-
-    alert("Successful reserve")
-    navigate("/");
+        );
+        setOpen(false);
+       
+      } catch (err) {}
+      console.log("User đặt"+user._id)
+      console.log("So Phòng đặt"+selectedRoomsNumber)
+      console.log("Ngày phòng đặt"+dates[0].endDate)
+  
+      console.log("Giá hóa đơn"+selectedRoomsPrice*selectedRooms.length*dayDistance)
+  
+   
+  
+      alert("Successful reserve")
+      navigate("/");
+    }else{
+      alert("Please select only one room")
+    }
+    
   };
   return (
     <div className="reserve">
@@ -124,7 +130,7 @@ const Reserve = ({ setOpen, hotelId }) => {
               <div className="rMax">
                 Max people: <b>{item.maxPeople}</b>
               </div>
-              <div className="rPrice">{item.price}</div>
+              <div className="rPrice">{item.price} per night</div>
             </div>
             <div className="rSelectRooms">
               {item.roomNumbers.map((roomNumber) => (

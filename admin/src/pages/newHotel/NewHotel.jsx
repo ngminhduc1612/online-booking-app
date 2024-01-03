@@ -52,7 +52,9 @@ const NewHotel = () => {
         photos: list,
       };
 
-      await axios.post("/hotels", newhotel);
+      const Success = await axios.post("/hotels", newhotel);
+      if (Success) alert("Adding hotel successfully");
+      else alert("Lost connection");
     } catch (err) {
       console.log(err);
     }
