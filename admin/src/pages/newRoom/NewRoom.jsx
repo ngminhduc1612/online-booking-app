@@ -22,13 +22,18 @@ const NewRoom = () => {
     e.preventDefault();
     const roomNumbers = rooms.split(",").map((room) => ({ number: room }));
     try {
-      await axios.post(`/rooms/${hotelId}`, { ...info, roomNumbers });
+      const Success = await axios.post(`/rooms/${hotelId}`, {
+        ...info,
+        roomNumbers,
+      });
+      if (Success) alert("update hotel successfully");
+      else alert("Lost connection");
     } catch (err) {
       console.log(err);
     }
   };
 
-  console.log(info)
+  console.log(info);
   return (
     <div className="new">
       <Sidebar />
@@ -68,7 +73,9 @@ const NewRoom = () => {
                     ? "loading"
                     : data &&
                       data.map((hotel) => (
-                        <option key={hotel._id} value={hotel._id}>{hotel.name}</option>
+                        <option key={hotel._id} value={hotel._id}>
+                          {hotel.name}
+                        </option>
                       ))}
                 </select>
               </div>

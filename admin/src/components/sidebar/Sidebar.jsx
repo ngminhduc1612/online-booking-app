@@ -14,24 +14,34 @@ import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined
 import { Link } from "react-router-dom";
 import { DarkModeContext } from "../../context/darkModeContext";
 import { useContext } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Sidebar = () => {
   const { dispatch } = useContext(DarkModeContext);
+  const navigate = useNavigate();
+  const handleClick = (e) => {
+    e.preventDefault();
+    try {
+      navigate("/login");
+    } catch (err) {}
+  };
   return (
     <div className="sidebar">
       <div className="top">
         <Link to="/" style={{ textDecoration: "none" }}>
-          <span className="logo">lamadmin</span>
+          <span className="logo">Online Booking</span>
         </Link>
       </div>
       <hr />
       <div className="center">
         <ul>
           <p className="title">MAIN</p>
-          <li>
-            <DashboardIcon className="icon" />
-            <span>Dashboard</span>
-          </li>
+          <Link to="/" style={{ textDecoration: "none" }}>
+            <li>
+              <DashboardIcon className="icon" />
+              <span>Dashboard</span>
+            </li>
+          </Link>
           <p className="title">LISTS</p>
           <Link to="/users" style={{ textDecoration: "none" }}>
             <li>
@@ -54,10 +64,10 @@ const Sidebar = () => {
           <Link to="/orders" style={{ textDecoration: "none" }}>
             <li>
               <LocalShippingIcon className="icon" />
-              <span>Delivery</span>
+              <span>Orders</span>
             </li>
           </Link>
-          <p className="title">USEFUL</p>
+          {/* <p className="title">USEFUL</p>
           <li>
             <InsertChartIcon className="icon" />
             <span>Stats</span>
@@ -78,13 +88,13 @@ const Sidebar = () => {
           <li>
             <SettingsApplicationsIcon className="icon" />
             <span>Settings</span>
-          </li>
+          </li> */}
           <p className="title">USER</p>
           <li>
             <AccountCircleOutlinedIcon className="icon" />
             <span>Profile</span>
           </li>
-          <li>
+          <li onClick={handleClick}>
             <ExitToAppIcon className="icon" />
             <span>Logout</span>
           </li>
