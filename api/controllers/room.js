@@ -8,6 +8,10 @@ export const createRoom = async (req, res, next) => {
     const newRoom = new Room(req.body);
   
     try {
+      const hotel = await Hotel.findById(
+        hotelId
+      );
+      newRoom.hotelName = hotel.name
       const savedRoom = await newRoom.save();
       try {
         await Hotel.findByIdAndUpdate(hotelId, {
@@ -75,7 +79,7 @@ export const createRoom = async (req, res, next) => {
   };
   export const getRooms = async (req, res, next) => {
     try {
-      const rooms = await Room.find();
+      const rooms = await Room.find(); 
       res.status(200).json(rooms);
     } catch (err) {
       next(err);
