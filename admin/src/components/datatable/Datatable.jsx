@@ -19,8 +19,10 @@ const Datatable = ({ columns }) => {
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`/${path}/${id}`);
+      const Success = await axios.delete(`/${path}/${id}`);
       setList(list.filter((item) => item._id !== id));
+      if (Success) alert("Delete hotel successfully");
+      else alert("Lost connection");
     } catch (err) {}
   };
   const handleCheck = async (id) => {
