@@ -82,7 +82,7 @@ const HomeScreen = () => {
         adults:adults,
         children:children,
         selectedDates:selectedDates,
-        city:city,
+        city:city
       })
     } 
   }

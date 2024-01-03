@@ -9,6 +9,7 @@ const PropertyCard = ({ rooms, children, adults, selectedDates, city, item }) =>
     // console.log(city)
     // console.log(selectedDates)
     // console.log(photos)
+    console.log(rooms)
     const navigation = useNavigation();
     return (
         <View>

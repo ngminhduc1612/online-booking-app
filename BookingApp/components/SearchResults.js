@@ -26,7 +26,7 @@ const SearchResults = ({data,input,setInput}) => {
                        <View style={{marginLeft:10}}>
                            <Text style={{fontSize:15,fontWeight:"500"}}>{item.name}</Text>
                            <Text style={{fontSize:15,fontWeight:"500"}}>{item.city}</Text>
-                           <Text style={{marginVertical:4}}>{item.desc}</Text>
+                           <Text style={{marginVertical:4}}>{item.address}</Text>
                        </View>
                    </Pressable>
                )
