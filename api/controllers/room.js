@@ -11,6 +11,7 @@ export const createRoom = async (req, res, next) => {
       const hotel = await Hotel.findById(
         hotelId
       );
+      newRoom.hotelId = hotelId
       newRoom.hotelName = hotel.name
       const savedRoom = await newRoom.save();
       try {
@@ -54,11 +55,11 @@ export const createRoom = async (req, res, next) => {
     }
   };
   export const deleteRoom = async (req, res, next) => {
-    const hotelId = req.params.hotelid;
     try {
+      const deleteRoom = await Room.findById(req.params.id);
       await Room.findByIdAndDelete(req.params.id);
       try {
-        await Hotel.findByIdAndUpdate(hotelId, {
+        await Hotel.findByIdAndUpdate(deleteRoom.hotelId, {
           $pull: { rooms: req.params.id },
         });
       } catch (err) {
