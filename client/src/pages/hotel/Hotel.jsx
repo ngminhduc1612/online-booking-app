@@ -25,6 +25,7 @@ const Hotel = () => {
   const [open, setOpen] = useState(false);
   const [openModal, setOpenModal] = useState(false);
 
+  // lay thong tin cua hotel theo id
   const { data, loading, error } = useFetch(`/hotels/find/${id}`);
   const { user } = useContext(AuthContext);
   const navigate = useNavigate();
@@ -131,11 +132,11 @@ const Hotel = () => {
               <div className="hotelDetailsPrice">
                 <h1>Perfect for a {days}-night stay!</h1>
                 <span>
-                  Located in the real heart of Krakow, this property has an
-                  excellent location score of 9.8!
+                  Located in the {data.address}, this property has an
+                  excellent location!
                 </span>
                 <h2>
-                  <b>${days * data.cheapestPrice * options.room}</b> ({days}{" "}
+                  <b>Price only from ${days * data.cheapestPrice * options.room}</b> ({days}{" "}
                   nights)
                 </h2>
                 <button onClick={handleClick}>Reserve or Book Now!</button>
