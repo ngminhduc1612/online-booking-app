@@ -77,8 +77,13 @@ export const roomColumns = [
     width: 200,
   },
   {
+    field: "hotelName",
+    headerName: "Hotel",
+    width: 200,
+  },
+  {
     field: "price",
-    headerName: "Price",
+    headerName: "Min Price",
     width: 100,
   },
   {
