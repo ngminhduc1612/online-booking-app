@@ -3,9 +3,11 @@ import react, { useLayoutEffect } from "react";
 import { useNavigation, useRoute } from "@react-navigation/native";
 import { pixelNormalize } from "../components/Normalise";
 import { MaterialIcons } from "@expo/vector-icons";
+import Amenities from "../components/Amenities";
 const PropertyInfoScreen = () => {
     const route = useRoute();
     console.log(route.params.item.photos.slice(0,5));
+    console.log(route.params.item)
     data = route.params.item
     const navigation = useNavigation();
     useLayoutEffect(() => {
@@ -97,7 +99,7 @@ const PropertyInfoScreen = () => {
                 </View>
               </View>
 
-              <View
+              {/* <View
                 style={{
                   backgroundColor: "#17B169",
                   paddingHorizontal: 6,
@@ -108,7 +110,7 @@ const PropertyInfoScreen = () => {
                 <Text style={{ color: "white", fontSize: 13 }}>
                   Travel sustainable
                 </Text>
-              </View>
+              </View> */}
             </View>
             
             <Text
@@ -207,8 +209,44 @@ const PropertyInfoScreen = () => {
                 {route.params.children} children
               </Text>
             </View>
+            <Text 
+            style = {{
+              borderColor: "#E0E0E0",
+              borderWidth: 3,
+              height: 1,
+              marginTop: 15,
+            }}/>
+            
+            {/* <Amenities/> */}
+            
+      <Pressable
+      onPress={() => navigation.navigate("Rooms",{
+        price:data.cheapestPrice * route.params.adults,
+        name:data.name,
+        // rooms:data.rooms,
+        children:route.params.children,
+        adults:route.params.adults,
+        startDate:route.params.selectedDates.startDate,
+        endDate:route.params.selectedDates.endDate,
+        id:data._id
+      })}
+        style={{
+          backgroundColor: "#6CB4EE",
+          position: "absolute",
+          bottom: 20,
+          padding: 15,
+          width:"95%",
+          marginHorizontal:10,
+        }}
+      >
+        <Text style={{ textAlign: "center", color: "white",fontWeight:"bold",fontSize:17 }}>
+          Select Availabilty
+        </Text>
+      </Pressable>
           </ScrollView>
         </SafeAreaView>
+
+        
     )
 }
 
