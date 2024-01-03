@@ -6,6 +6,14 @@ const RoomSchema = new mongoose.Schema({
         type: String,
         required:true
     },
+    hotelId:{
+        type: String,
+        required:true
+    },
+    hotelName:{
+        type: String,
+        required:true
+    },
     price:{
         type: Number,
         required:true
