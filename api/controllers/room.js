@@ -8,6 +8,11 @@ export const createRoom = async (req, res, next) => {
     const newRoom = new Room(req.body);
   
     try {
+      const hotel = await Hotel.findById(
+        hotelId
+      );
+      newRoom.hotelId = hotelId
+      newRoom.hotelName = hotel.name
       const savedRoom = await newRoom.save();
       try {
         await Hotel.findByIdAndUpdate(hotelId, {
@@ -50,11 +55,11 @@ export const createRoom = async (req, res, next) => {
     }
   };
   export const deleteRoom = async (req, res, next) => {
-    const hotelId = req.params.hotelid;
     try {
+      const deleteRoom = await Room.findById(req.params.id);
       await Room.findByIdAndDelete(req.params.id);
       try {
-        await Hotel.findByIdAndUpdate(hotelId, {
+        await Hotel.findByIdAndUpdate(deleteRoom.hotelId, {
           $pull: { rooms: req.params.id },
         });
       } catch (err) {
@@ -75,7 +80,7 @@ export const createRoom = async (req, res, next) => {
   };
   export const getRooms = async (req, res, next) => {
     try {
-      const rooms = await Room.find();
+      const rooms = await Room.find(); 
       res.status(200).json(rooms);
     } catch (err) {
       next(err);
