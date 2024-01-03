@@ -8,7 +8,7 @@ import React from "react";
 import { SearchContext } from "../../context/SearchContext";
 const Featured = () => {
   const { data, loading, error } = useFetch(
-    "/hotels/countByCity?cities=NinhBinh,Hanoi,london"
+    "/hotels/countByCity?cities=Hà Nội,Ninh Bình,Đà Nẵng"
   );
   const [destination, setDestination] = useState("");
 
@@ -47,7 +47,7 @@ const Featured = () => {
         <>
           <div
             className="featuredItem"
-            onClick={() => handleSearch("NinhBinh")}
+            onClick={() => handleSearch("Ninh Bình")}
           >
             <img
               src="https://cdn.tgdd.vn/Files/2022/03/28/1422795/kinh-nghiem-du-lich-chua-bai-dinh-ninh-binh-day-du-tu-a-z-202203282349275615.jpg"
@@ -56,7 +56,7 @@ const Featured = () => {
             />
             <div className="featuredTitles">
               <h1>Ninh Binh</h1>
-              <h2>{data[0]} hotels</h2>
+              <h2>{data[1]} hotels</h2>
             </div>
           </div>
 
@@ -68,10 +68,10 @@ const Featured = () => {
             />
             <div
               className="featuredTitles"
-              onClick={() => handleSearch("Hanoi")}
+              onClick={() => handleSearch("Hà Nội")}
             >
               <h1>Ha Noi</h1>
-              <h2>{data[1]} hotels</h2>
+              <h2>{data[0]} hotels</h2>
             </div>
           </div>
           <div className="featuredItem">
@@ -82,9 +82,9 @@ const Featured = () => {
             />
             <div
               className="featuredTitles"
-              onClick={() => handleSearch("london")}
+              onClick={() => handleSearch("Đà Nẵng")}
             >
-              <h1>London</h1>
+              <h1>Da Nang</h1>
               <h2>{data[2]} hotels</h2>
             </div>
           </div>
