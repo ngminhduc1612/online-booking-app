@@ -64,6 +64,9 @@ const Login = () => {
         <button disabled={loading} onClick={handleClick} className="lButton">
           Login
         </button>
+        <button  className="btn_register">
+          Register
+        </button>
         {error && <span>{error.message}</span>}
       </div>
     </div>

@@ -35,6 +35,17 @@ const List = () => {
     dispatch({ type: "NEW_SEARCH", payload: { destination, dates, options } });
   };
 
+
+  const handleChange=(item) => {
+    // console.log("change date")
+    // Cập nhật state dates
+    setDates([item.selection]);
+    // console.log("change date")
+    // console.log([item.selection])
+    // Lệnh dispatch
+    dispatch({ type: "NEW_SEARCH", payload: { destination, dates, options } });
+    // console.log("thanh cong dispatch")
+  };
   return (
     <div>
       <Navbar />
@@ -55,14 +66,15 @@ const List = () => {
               )} to ${format(dates[0].endDate, "MM/dd/yyyy")}`}</span>
               {openDate && (
                 <DateRange
-                  onChange={(item) => setDates([item.selection]) }
-                  minDate={new Date()}
+                onChange={(item) => handleChange(item)}                  
+                minDate={new Date()}
                   ranges={dates}
                 />
               )}
             </div>
             <div className="lsItem">
-              <label>Options</label>
+              {/*  chinh gia tien */}
+              <label>Price option</label>
               <div className="lsOptions">
                 <div className="lsOptionItem">
                   <span className="lsOptionText">
@@ -70,7 +82,7 @@ const List = () => {
                   </span>
                   <input
                     type="number"
-                    onChange={(e) => setMin(e.target.value)}
+                    onChange={(e) => setMin(e.target.value-1)}
                     className="lsOptionInput"
                   />
                 </div>

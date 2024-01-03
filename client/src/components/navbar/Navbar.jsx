@@ -10,10 +10,18 @@ const Navbar = () => {
           <div className="navContainer">
         
               <Link to="/" style={{ color: "inherit", textDecoration: "none" }}>
-               <img className="logo" src="https://onlinebooking.vn/wp-content/uploads/online-booking-logo-no-1.png" alt="" />
+               <img className="logo" src="https://www.hilton.com/modules/assets/svgs/logos/WW.svg" alt="" />
             </Link>
 
-            {user ? (<h1 className="account">Hello,{user.username}</h1>) : (
+            {user ? (<div className="logout">
+            <h1 className="account">Hello,{user.username}</h1> 
+            <Link to="/login">
+
+              <button className="navButton" >Log out</button>
+              </Link>
+            </div>
+            
+            ) : (
             <div className="navItems">
               {/* <button className="navButton" >List your Hotel</button> */}
               <button className="navButton" >Register</button>
