@@ -38,7 +38,7 @@ const Datatable = ({ columns }) => {
     {
       field: "action",
       headerName: "Action",
-      width: 200,
+      width: 170,
       renderCell: (params) => {
         return (
           <div className="cellAction">
@@ -87,12 +87,14 @@ const Datatable = ({ columns }) => {
   ];
   return data.length !== 0 ? (
     <div className="datatable">
-      <div className="datatableTitle">
-        {path}
-        <Link to={`/${path}/new`} className="link">
-          Add New
-        </Link>
-      </div>
+      {path !== "orders" ? (
+        <div className="datatableTitle">
+          {path}
+          <Link to={`/${path}/new`} className="link">
+            Add New
+          </Link>
+        </div>
+      ) : null}
       {path === "orders" ? (
         <DataGrid
           className="datagrid"
