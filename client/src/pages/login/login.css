@@ -29,7 +29,7 @@
   border: none;
   margin: 16px 0;
   padding: 10px 20px;
-  background-color: #0071c2;
+  background-color: #3d97fd;
   color: white;
   font-weight: bold;
   cursor: pointer;
@@ -37,7 +37,7 @@
 }
 
 .lButton:disabled{
-  background-color: #0071c28c;
+  background-color: #919ba18c;
   cursor: not-allowed;
 }
 
@@ -54,4 +54,10 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+}
+
+.register{
+  margin-top:-10px;
+  text-decoration: none;
+  font-size:14px;
 }
