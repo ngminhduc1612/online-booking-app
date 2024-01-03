@@ -3,11 +3,11 @@ import React, { useEffect, useState } from "react";
 import { Feather } from "@expo/vector-icons";
 import SearchResults from "../components/SearchResults";
 import useFetch from "../useFetch";
-import axios from "axios";
+// import axios from "axios";
 
 const SearchScreen = () => {
     const [input,setInput] = useState("");
-    const { data, loading, error } = useFetch(`http://192.168.59.1:8800/api/hotels/?city=${input}`);
+    const { data, loading, error } = useFetch(`http://192.168.56.1:8800/api/hotels/?city=${input}`);
     // console.log(data)
     // console.log(loading)
     // console.log(error)
