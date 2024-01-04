@@ -13,7 +13,7 @@ import { FontAwesome } from '@expo/vector-icons';
 const PlacesScreen = () => {
   const route = useRoute()
   const input = route.params?.city
-  const { data, loading, error } = useFetch(`http://192.168.59.1:8800/api/hotels/?city=${input}`);
+  const { data, loading, error } = useFetch(`http://192.168.56.1:8800/api/hotels/?city=${input}`);
   const navigation = useNavigation()
   const [modalVisible, setModalVisible] = useState(false)
   const filters = [
