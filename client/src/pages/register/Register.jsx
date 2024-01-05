@@ -3,10 +3,8 @@ import axios from "axios";
 import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
-import { Link } from "react-router-dom";
-import "./login.css";
 
-const Login = () => {
+const Register = () => {
   const [credentials, setCredentials] = useState({
     username: undefined,
     password: undefined,
@@ -38,7 +36,7 @@ const Login = () => {
   return (
     <div className="login">
       <div className="lContainer">
-      <h1 className="Login">Login</h1>
+      <h1 className="Login">Register</h1>
         <input
           type="text"
           placeholder="username"
@@ -53,6 +51,22 @@ const Login = () => {
           onChange={handleChange}
           className="lInput"
         />
+
+          <input
+          type="password"
+          placeholder="Email"
+          id="password"
+          onChange={handleChange}
+          className="lInput"
+        />
+
+        <input
+          type="password"
+          placeholder="Phone"
+          id="password"
+          onChange={handleChange}
+          className="lInput"
+        />
        
           {/* <label>
             <input 
@@ -62,18 +76,15 @@ const Login = () => {
             Remember Me
           </label> */}
          
-        <button disabled={loading} onClick={handleClick} className="lButton">
-          Login
-        </button>
-        <Link className="lButton register" to="/register">
-       
-          Register
+      
         
-        </Link>
+        <button  className="lButton btn_registerr">
+          Save
+        </button>
         {error && <span>{error.message}</span>}
       </div>
     </div>
   );
 };
 
-export default Login;
+export default Register;
