@@ -141,7 +141,7 @@ const PropertyInfoScreen = () => {
                 {route.params.item.cheapestPrice * route.params.adults}
               </Text> */}
             <Text style={{ fontSize: 20 }}>
-              Rs {data.cheapestPrice * route.params.adults} $
+              Cheapest price is {data.cheapestPrice} $
             </Text>
           </View>
 
@@ -224,7 +224,7 @@ const PropertyInfoScreen = () => {
       }}>
         <Pressable
           onPress={() => navigation.navigate("Rooms", {
-            price: data.cheapestPrice * route.params.adults,
+            price: data.cheapestPrice,
             name: data.name,
             // rooms:data.rooms,
             children: route.params.children,
