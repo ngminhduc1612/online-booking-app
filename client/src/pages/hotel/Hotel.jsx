@@ -25,7 +25,7 @@ const Hotel = () => {
   const [open, setOpen] = useState(false);
   const [openModal, setOpenModal] = useState(false);
 
-  // lay thong tin cua hotel theo id
+  // lay thong tin cua hotel theo id hotel
   const { data, loading, error } = useFetch(`/hotels/find/${id}`);
   const { user } = useContext(AuthContext);
   const navigate = useNavigate();
@@ -130,15 +130,19 @@ const Hotel = () => {
                 <p className="hotelDesc">{data.desc}</p>
               </div>
               <div className="hotelDetailsPrice">
-                <h1>Perfect for a {days}-night stay!</h1>
+              {days !== 0 && <h1>Perfect for a {days}-night stay!</h1>}
                 <span>
                   Located in the {data.address}, this property has an
                   excellent location!
                 </span>
-                <h2>
+                {days == 0 &&<h2>
+                  <b>Price only from ${ data.cheapestPrice} per night</b> 
+                  
+                </h2>}
+                {/* {days == 0 &&<h2>
                   <b>Price only from ${days * data.cheapestPrice * options.room}</b> ({days}{" "}
                   nights)
-                </h2>
+                </h2>} */}
                 <button onClick={handleClick}>Reserve or Book Now!</button>
               </div>
             </div>
