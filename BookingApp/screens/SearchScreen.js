@@ -7,7 +7,7 @@ import useFetch from "../useFetch";
 
 const SearchScreen = () => {
     const [input,setInput] = useState("");
-    const { data, loading, error } = useFetch(`http://192.168.59.1:8800/api/hotels/?city=${input}`);
+    const { data, loading, error } = useFetch(`http://192.168.56.1:8800/api/hotels/?city=${input}`);
     // console.log(data)
     // console.log(loading)
     // console.log(error)
@@ -26,7 +26,7 @@ const SearchScreen = () => {
                     borderRadius: 10
                 }}
             >
-                <TextInput value={input} onChangeText={(text) => setInput(text)} placeholder="Enter Your Destination" />
+                <TextInput value={input} onChangeText={(text) => setInput(text)} placeholder="Enter Your Destination" autoFocus={true}/>
                 <Feather name="search" size={22} color="black" />
             </View>
             

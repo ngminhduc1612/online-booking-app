@@ -19,8 +19,10 @@ const Datatable = ({ columns }) => {
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`/${path}/${id}`);
+      const Success = await axios.delete(`/${path}/${id}`);
       setList(list.filter((item) => item._id !== id));
+      if (Success) alert("Delete hotel successfully");
+      else alert("Lost connection");
     } catch (err) {}
   };
   const handleCheck = async (id) => {
@@ -36,7 +38,7 @@ const Datatable = ({ columns }) => {
     {
       field: "action",
       headerName: "Action",
-      width: 200,
+      width: 170,
       renderCell: (params) => {
         return (
           <div className="cellAction">
@@ -85,12 +87,14 @@ const Datatable = ({ columns }) => {
   ];
   return data.length !== 0 ? (
     <div className="datatable">
-      <div className="datatableTitle">
-        {path}
-        <Link to={`/${path}/new`} className="link">
-          Add New
-        </Link>
-      </div>
+      {path !== "orders" ? (
+        <div className="datatableTitle">
+          {path}
+          <Link to={`/${path}/new`} className="link">
+            Add New
+          </Link>
+        </div>
+      ) : null}
       {path === "orders" ? (
         <DataGrid
           className="datagrid"

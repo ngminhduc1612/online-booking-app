@@ -8,7 +8,7 @@ import React from "react";
 import { SearchContext } from "../../context/SearchContext";
 const Featured = () => {
   const { data, loading, error } = useFetch(
-    "/hotels/countByCity?cities=NinhBinh,Hanoi,london"
+    "/hotels/countByCity?cities=Hà Nội,Ninh Bình,Đà Nẵng"
   );
   const [destination, setDestination] = useState("");
 
@@ -47,31 +47,31 @@ const Featured = () => {
         <>
           <div
             className="featuredItem"
-            onClick={() => handleSearch("NinhBinh")}
+            onClick={() => handleSearch("Ninh Bình")}
           >
             <img
-              src="https://cf.bstatic.com/xdata/images/city/max500/957801.webp?k=a969e39bcd40cdcc21786ba92826063e3cb09bf307bcfeac2aa392b838e9b7a5&o="
+              src="https://cdn.tgdd.vn/Files/2022/03/28/1422795/kinh-nghiem-du-lich-chua-bai-dinh-ninh-binh-day-du-tu-a-z-202203282349275615.jpg"
               alt=""
               className="featuredImg"
             />
             <div className="featuredTitles">
               <h1>Ninh Binh</h1>
-              <h2>{data[0]} properties</h2>
+              <h2>{data[1]} hotels</h2>
             </div>
           </div>
 
           <div className="featuredItem">
             <img
-              src="https://cf.bstatic.com/xdata/images/city/max500/690334.webp?k=b99df435f06a15a1568ddd5f55d239507c0156985577681ab91274f917af6dbb&o="
+              src="https://ik.imagekit.io/tvlk/blog/2023/09/ho-guom-1.jpg?tr=dpr-2,w-675"
               alt=""
               className="featuredImg"
             />
             <div
               className="featuredTitles"
-              onClick={() => handleSearch("Hanoi")}
+              onClick={() => handleSearch("Hà Nội")}
             >
               <h1>Ha Noi</h1>
-              <h2>{data[1]} properties</h2>
+              <h2>{data[0]} hotels</h2>
             </div>
           </div>
           <div className="featuredItem">
@@ -82,10 +82,10 @@ const Featured = () => {
             />
             <div
               className="featuredTitles"
-              onClick={() => handleSearch("london")}
+              onClick={() => handleSearch("Đà Nẵng")}
             >
-              <h1>London</h1>
-              <h2>{data[2]} properties</h2>
+              <h1>Da Nang</h1>
+              <h2>{data[2]} hotels</h2>
             </div>
           </div>
         </>

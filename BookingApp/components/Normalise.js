@@ -9,6 +9,6 @@ export function pixelNormalize(size){
     if(Platform.OS === "ios"){
         return Math.round(PixelRatio.roundToNearestPixel(newSize));
     }else{
-        Math.round(PixelRatio.roundToNearestPixel(newSize)) - 2
+        return Math.round(PixelRatio.roundToNearestPixel(newSize)) - 2;
     }
 }
