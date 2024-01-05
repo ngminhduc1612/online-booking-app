@@ -71,7 +71,7 @@ const Datatable = ({ columns }) => {
               className="viewButton"
               onClick={() => handleCheck(params.row._id)}
             >
-              Check
+              Paid
             </div>
 
             <div

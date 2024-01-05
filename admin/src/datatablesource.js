@@ -82,7 +82,7 @@ export const roomColumns = [
   },
 ];
 export const orderColumns = [
-  { field: "username", headerName: "User Name", width: 230 },
+  { field: "username", headerName: "User Name", width: 115 },
   { field: "hotelid", headerName: "Hotel Name", width: 230 },
 
   {
@@ -109,5 +109,10 @@ export const orderColumns = [
     field: "status",
     headerName: "Paid",
     width: 100,
+  },
+  {
+    field: "createdAt",
+    headerName: "Create at",
+    width: 115,
   },
 ];
