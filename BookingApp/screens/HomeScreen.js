@@ -82,7 +82,7 @@ const HomeScreen = () => {
         adults:adults,
         children:children,
         selectedDates:selectedDates,
-        city:city,
+        city:city
       })
     } 
   }
@@ -113,7 +113,8 @@ const HomeScreen = () => {
               <Feather name="search" size={24} color="black" />
               <TextInput
                 placeholderTextColor="black"
-                placeholder={route?.params ? route.params.input : "Enter your Destination"}/>
+                placeholder={route?.params ? route.params.input : "Enter your Destination"}
+                editable={false}/>
             </Pressable>
 
             <Pressable

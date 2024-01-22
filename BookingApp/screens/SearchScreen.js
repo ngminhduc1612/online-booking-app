@@ -26,7 +26,7 @@ const SearchScreen = () => {
                     borderRadius: 10
                 }}
             >
-                <TextInput value={input} onChangeText={(text) => setInput(text)} placeholder="Enter Your Destination" />
+                <TextInput value={input} onChangeText={(text) => setInput(text)} placeholder="Enter Your Destination" autoFocus={true}/>
                 <Feather name="search" size={22} color="black" />
             </View>
             
