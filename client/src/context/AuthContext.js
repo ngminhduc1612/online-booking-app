@@ -9,6 +9,7 @@ const INITIAL_STATE = {
 
 export const AuthContext = createContext(INITIAL_STATE);
 
+// quản lý các trạng thái của context- các action như LOGIN_START để cập nhật trạng thái context
 const AuthReducer = (state, action) => {
   switch (action.type) {
     //   luc bam nut dang nhap
@@ -24,6 +25,8 @@ const AuthReducer = (state, action) => {
         loading: false,
         error: null,
       };
+      // khi co action gui sang  dispatch({ type: "LOGIN_SUCCESS", payload: res.data });
+      // sẽ có thuộc tính payload, action.payload để truy cập vào đó
     case "LOGIN_FAILURE":
       return {
         user: null,
